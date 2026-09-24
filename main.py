@@ -24,10 +24,29 @@ def main() -> None:
         from core.engine import run_engine
         run_engine()
     else:
-        from PySide6.QtWidgets import QApplication
-        from gui.main_window import MainWindow
+        try:
+            from PySide6.QtWidgets import QApplication
+            from gui.main_window import MainWindow
+        except ImportError:
+            print("\n" + "=" * 65)
+            print("[AutoDeploy] PySide6 belum terpasang di sistem Python VPS ini.")
+            print("=" * 65)
+            print("PILIHAN CARA MENJALANKAN:")
+            print("")
+            print("1. Jika ingin membuka GUI pengaturan (lewat RDP):")
+            print("   Jalankan perintah ini terlebih dahulu:")
+            print("     pip install PySide6")
+            print("     atau")
+            print("     pip install -r requirements.txt")
+            print("   Lalu jalankan:")
+            print("     python main.py")
+            print("")
+            print("2. Jika ingin menjalankan Engine background saja (tanpa GUI):")
+            print("   Engine 100% menggunakan Python standard library (tanpa perlu install apa pun):")
+            print("     python main.py --engine")
+            print("=" * 65 + "\n")
+            sys.exit(1)
 
-        # Enable High DPI scaling
         app = QApplication(sys.argv)
         app.setApplicationName("AutoDeploy")
         app.setOrganizationName("AutoDeploy")

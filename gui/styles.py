@@ -9,7 +9,7 @@ DARK_THEME_QSS = """
 QWidget {
     background-color: #0f172a;
     color: #f8fafc;
-    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    font-family: "Segoe UI";
     font-size: 13px;
     selection-background-color: #3b82f6;
     selection-color: #ffffff;
